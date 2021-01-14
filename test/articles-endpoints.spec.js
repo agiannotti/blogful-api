@@ -56,6 +56,12 @@ describe('Articles Endpoints', () => {
           const actualDate = new Date(res.body.date_published).toLocaleString();
           const expectedDate = new Date().toLocaleString();
           expect(actualDate).to.eql(expectedDate);
+          // integration piece to ensure post request was also written into database
+          return db('blogful_articles')
+            .select('*')
+            .where({ id: res.body.id })
+            .first()
+            .then((article) => expect(article).to.exist);
         });
     });
   });
