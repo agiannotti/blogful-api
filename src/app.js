@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const articlesService = require('./articles-service');
 
 const { NODE_ENV } = require('./config');
 
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/articles', (req, res) => {
+  articlesService.getAllArticles(req.app.get('db'));
   res.json([]);
 });
 
