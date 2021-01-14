@@ -34,7 +34,7 @@ describe('Articles Endpoints', () => {
   });
 
   describe('POST /articles', () => {
-    it('should return 201 with new article when data is valid', () => {
+    it('should return 201 with new article when data is valid', function () {
       const validArticle = {
         title: 'New Blog',
         content: 'some content',
@@ -46,6 +46,7 @@ describe('Articles Endpoints', () => {
         .send(validArticle)
         .expect(201)
         .then((res) => {
+          this.retries(3);
           expect(res.body).to.be.an('object');
           expect(res.body.title).to.eql(validArticle.title);
           expect(res.body.content).to.eql(validArticle.content);
