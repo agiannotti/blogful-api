@@ -24,8 +24,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/articles', (req, res) => {
-  articlesService.getAllArticles(req.app.get('db'));
-  res.json([]);
+  articlesService.getAllArticles(req.app.get('db')).then((articles) => {
+    res.json(articles);
+  });
 });
 
 // Error handlers
