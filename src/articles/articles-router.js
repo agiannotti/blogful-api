@@ -32,4 +32,6 @@ articlesRouter.post('/', (req, res, next) => {
     .catch(next);
 });
 
+// hacker mans danger str
+//<p>Hello There!</p><img onerror='console.log(window.localStorage.getItem("secret_token"))' src='error.jpg'>
 module.exports = articlesRouter;
