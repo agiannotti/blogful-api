@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --require test/setup.js",
-    "start": "node src/pratice.js",
-    "dev": "nodemon src/pratice.js",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
     "predeploy": "npm audit",
     "deploy": "git push heroku master",
     "migrate": "postgrator --config ./postgrator-config.js",

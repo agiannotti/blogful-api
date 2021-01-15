@@ -20,11 +20,11 @@ articlesRouter.get('/', (req, res, next) => {
 articlesRouter.post('/', (req, res, next) => {
   const { title, content, style } = req.body;
   const newArticle = { title, content, style };
-  ArticlesService.insertArticle(req.app.get('db'), newArticle).then(
-    (article) => {
+  ArticlesService.insertArticle(req.app.get('db'), newArticle)
+    .then((article) => {
       res.status(201).location(`/articles/${article.id}`).json(article);
-    }
-  );
+    })
+    .catch(next);
 });
 
 module.exports = articlesRouter;
